@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/CarDealerShip</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        <mapping resource="CarSupplierEntity.hbm.xml"/>
+        <mapping class="com.company.CarSupplierEntity"/>
+        <mapping class="com.company.CarsEntity"/>
+        <mapping resource="CarsEntity.hbm.xml"/>
+        <mapping class="com.company.ClientsEntity"/>
+        <mapping resource="ClientsEntity.hbm.xml"/>
+        <mapping class="com.company.EmployeersEntity"/>
+        <mapping resource="EmployeersEntity.hbm.xml"/>
+        <mapping class="com.company.EnginetypesEntity"/>
+        <mapping resource="EnginetypesEntity.hbm.xml"/>
+        <mapping resource="SalesEntity.hbm.xml"/>
+        <mapping class="com.company.SalesEntity"/>
+        <mapping resource="SuppliersEntity.hbm.xml"/>
+        <mapping class="com.company.SuppliersEntity"/>
+        <mapping class="com.company.TransmissiontypesEntity"/>
+        <mapping resource="TransmissiontypesEntity.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.company.ClientsEntity" table="clients" schema="cardealership">
+        <id name="id">
+            <column name="ID" sql-type="int(11)"/>
+        </id>
+        <property name="firstName">
+            <column name="FirstName" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="secondName">
+            <column name="SecondName" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="patronymic">
+            <column name="Patronymic" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="phoneNumber">
+            <column name="PhoneNumber" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

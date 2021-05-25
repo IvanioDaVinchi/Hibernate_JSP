@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.company.TransmissiontypesEntity" table="transmissiontypes" schema="cardealership">
+        <id name="id">
+            <column name="ID" sql-type="int(11)"/>
+        </id>
+        <property name="nameTransmission">
+            <column name="NameTransmission" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="numberOfGears">
+            <column name="NumberOfGears" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

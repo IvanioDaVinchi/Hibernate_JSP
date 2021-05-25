@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.company.EnginetypesEntity" table="enginetypes" schema="cardealership">
+        <id name="id">
+            <column name="ID" sql-type="int(11)"/>
+        </id>
+        <property name="nameEngine">
+            <column name="NameEngine" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="engineCapacity">
+            <column name="EngineCapacity" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="enginePower">
+            <column name="EnginePower" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
