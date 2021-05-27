@@ -23,12 +23,12 @@ public class ClientsDao
         tx1.commit();
         session.close();
     }
-    public void Delete(ClientsEntity client)
+    public void Delete(int id)
     {
         Session session = HibernateSessionFactoryUtil.getSession();
         session.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.delete(client);
+        session.delete(session.get(ClientsEntity.class, id));
         tx1.commit();
         session.close();
     }

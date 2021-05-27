@@ -24,12 +24,12 @@ public class TransmissionTypesDao
         tx1.commit();
         session.close();
     }
-    public void Delete(TransmissiontypesEntity transmis)
+    public void Delete(int id)
     {
         Session session = HibernateSessionFactoryUtil.getSession();
         session.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.delete(transmis);
+        session.delete(session.get(TransmissiontypesEntity.class, id));
         tx1.commit();
         session.close();
     }

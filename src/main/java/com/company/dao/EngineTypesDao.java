@@ -24,12 +24,12 @@ public class EngineTypesDao
         tx1.commit();
         session.close();
     }
-    public void Delete(EnginetypesEntity engine)
+    public void Delete(int id)
     {
         Session session = HibernateSessionFactoryUtil.getSession();
         session.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.delete(engine);
+        session.delete(session.get(EnginetypesEntity.class, id));
         tx1.commit();
         session.close();
     }

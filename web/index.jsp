@@ -11,6 +11,8 @@
     <title>PolskaSait</title>
 </head>
     <body>
-        text
+        <table>
+
+        </table>
     </body>
 </html>

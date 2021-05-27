@@ -1,5 +1,3 @@
-import com.company.Handlers.MenuHandler;
-import com.company.OutTable;
 import org.hibernate.HibernateException;
 import org.hibernate.Metamodel;
 import org.hibernate.query.Query;
@@ -8,8 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import java.util.Scanner;
 import javax.persistence.metamodel.EntityType;
-
-import java.util.Map;
 
 public class Main
 {

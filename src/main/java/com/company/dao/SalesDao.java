@@ -24,12 +24,12 @@ public class SalesDao
         tx1.commit();
         session.close();
     }
-    public void Delete(SalesEntity sale)
+    public void Delete(int id)
     {
         Session session = HibernateSessionFactoryUtil.getSession();
         session.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.delete(sale);
+        session.delete(session.get(SalesEntity.class, id));
         tx1.commit();
         session.close();
     }
