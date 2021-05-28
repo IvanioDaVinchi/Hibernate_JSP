@@ -12,32 +12,12 @@ import java.util.Scanner;
 public class UpdateHandler
 {
     static Scanner in = new Scanner(System.in);
-    public void UpdateCars()
+    public void UpdateCars(int id, String carBrand, String carModel, Double speed, Double racing, int engineType, int transmissionType, String color, int price)
     {
-        System.out.println("ведите id авто");
-        int id = in.nextInt();
-        System.out.println("Введите марку авто");
-        String carBrand = in.next();
-        System.out.println("Введите модель авто");
-        String carModel = in.next();
-        System.out.println("Введите скорость авто");
-        Double speed = in.nextDouble();
-        System.out.println("Введите разгон до 100 авто");
-        Double racing = in.nextDouble();
-        System.out.println("Введите тип двигателя авто");
-        int engineType = in.nextInt();
-        System.out.println("Введите тип трансмиссии авто");
-        int transmissionType = in.nextInt();
-        System.out.println("Введите цвет кузова авто");
-        String color = in.next();
-        System.out.println("Введите цену авто");
-        int price = in.nextInt();
         EngineTypesDao engineDao = new EngineTypesDao();
-        List<EnginetypesEntity> listEngines = engineDao.GetListEngines();
-        EnginetypesEntity engine = listEngines.get(engineType - 1);
+        EnginetypesEntity engine = engineDao.GetObjectWithID(engineType);
         TransmissionTypesDao transmissionDao = new TransmissionTypesDao();
-        List<TransmissiontypesEntity> listTransmisson = transmissionDao.GetListTransmissions();
-        TransmissiontypesEntity transmission = listTransmisson.get(transmissionType - 1);
+        TransmissiontypesEntity transmission = transmissionDao.GetObjectWithID(transmissionType);
         CarsEntity car = new CarsEntity();
         CarsDao carDao = new CarsDao();
         car.setId(id);
@@ -51,14 +31,8 @@ public class UpdateHandler
         car.setPrice(price);
         carDao.Update(car);
     }
-    public void UpdateCarsSupplier()
+    public void UpdateCarsSupplier(int id, int idCar, int idSupplier)
     {
-        System.out.println("Введите id записи");
-        int id = in.nextInt();
-        System.out.println("Введите номер авто");
-        int idCar = in.nextInt();
-        System.out.println("Введите номер поставщика");
-        int idSupplier = in.nextInt();
         CarsDao carsDao = new CarsDao();
         List<CarsEntity> listCars = carsDao.GetListCars();
         CarsEntity car = listCars.get(idCar - 1);
@@ -73,19 +47,9 @@ public class UpdateHandler
         carSupplier.setId(id);
         carsSupplerDao.Update(carSupplier);
     }
-    public void UpdateClients()
+    public void UpdateClients(int id, String fName, String sName, String patronymic, String phoneNumber)
     {
-        System.out.println("Введите id клиента");
-        int id = in.nextInt();
         ClientsDao clientsDao = new ClientsDao();
-        System.out.println("Введите фамилию клиента");
-        String fName = in.next();
-        System.out.println("Введите имя клиента");
-        String sName = in.next();
-        System.out.println("Введите отчество клиента");
-        String patronymic = in.next();
-        System.out.println("Введите телефон клиента");
-        String phoneNumber = in.next();
         ClientsEntity client = new ClientsEntity();
         client.setId(id);
         client.setFirstName(fName);
@@ -94,21 +58,9 @@ public class UpdateHandler
         client.setPhoneNumber(phoneNumber);
         clientsDao.Update(client);
     }
-    public void UpdateEmplooyee()
+    public void UpdateEmplooyee(int id, String fName, String sName, String patronymic, String phoneNumber, String position)
     {
         EmployeesDao employeesDao = new EmployeesDao();
-        System.out.println("Введите id работника");
-        int id = in.nextInt();
-        System.out.println("Введите фамилию работника");
-        String fName = in.next();
-        System.out.println("Введите имя работника");
-        String sName = in.next();
-        System.out.println("Введите отчество работника");
-        String patronymic = in.next();
-        System.out.println("Введите телефон работника");
-        String phoneNumber = in.next();
-        System.out.println("Введите должность работника");
-        String position = in.next();
         EmployeersEntity employee = new EmployeersEntity();
         employee.setId(id);
         employee.setFirstName(fName);
@@ -118,28 +70,16 @@ public class UpdateHandler
         employee.setPosition(position);
         employeesDao.Update(employee);
     }
-    public void UpdateSupplier()
+    public void UpdateSupplier(int id, String nameSupplier)
     {
         SuppliersDao suppliersDao = new SuppliersDao();
         SuppliersEntity supplier = new SuppliersEntity();
-        System.out.println("Введите id поставщика");
-        int id = in.nextInt();
-        System.out.println("Введите наименование поставщика");
-        String nameSupplier = in.next();
         supplier.setId(id);
         supplier.setNameSupplier(nameSupplier);
         suppliersDao.Update(supplier);
     }
-    public void UpdateEngineType()
+    public void UpdateEngineType(int id, String nameEngine, Double capacity, int power)
     {
-        System.out.println("введите id двигателя");
-        int id = in.nextInt();
-        System.out.println("Введите ниаименование двигателя");
-        String nameEngine = in.next();
-        System.out.println("Введите объем двигателя");
-        Double capacity = in.nextDouble();
-        System.out.println("Введите мощность двигателя");
-        int power = in.nextInt();
         EngineTypesDao engineDao = new EngineTypesDao();
         EnginetypesEntity engineType = new EnginetypesEntity();
         engineType.setId(id);
@@ -148,14 +88,8 @@ public class UpdateHandler
         engineType.setEnginePower(power);
         engineDao.Update(engineType);
     }
-    public void UpdateTransmissionType()
+    public void UpdateTransmissionType(int id, String nameT, int countGears)
     {
-        System.out.println("Введите id трансмиссии");
-        int id = in.nextInt();
-        System.out.println("Введите наименование трансимссии");
-        String nameT = in.next();
-        System.out.println("Введите количство передач");
-        int countGears = in.nextInt();
         TransmissionTypesDao transmissionTypesDao = new TransmissionTypesDao();
         TransmissiontypesEntity transmission = new TransmissiontypesEntity();
         transmission.setId(id);
@@ -163,19 +97,9 @@ public class UpdateHandler
         transmission.setNumberOfGears(countGears);
         transmissionTypesDao.Update(transmission);
     }
-    public void UpdateSale() throws ParseException
+    public void UpdateSale(int id, int idClient, int idCar, int idEmployee, String date) throws ParseException
     {
         SalesDao salesDao = new SalesDao();
-        System.out.println("Введите id продажи");
-        int id = in.nextInt();
-        System.out.println("Введите id клиента");
-        int idClient = in.nextInt();
-        System.out.println("Введите id авто");
-        int idCar = in.nextInt();
-        System.out.println("Введите id сотрудника");
-        int idEmployee = in.nextInt();
-        System.out.println("Введите дату продажи");
-        String date = in.next();
         ClientsDao clientsDao = new ClientsDao();
         CarsDao carsDao = new CarsDao();
         EmployeesDao employeesDao = new EmployeesDao();

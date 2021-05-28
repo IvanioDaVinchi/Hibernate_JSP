@@ -42,4 +42,12 @@ public class SalesDao
         tx1.commit();
         session.close();
     }
+    public SalesEntity GetObjectWithID(int id)
+    {
+        Session session = HibernateSessionFactoryUtil.getSession();
+        session.getSessionFactory().openSession();
+        SalesEntity sale = session.get(SalesEntity.class, id);
+        session.close();
+        return sale;
+    }
 }

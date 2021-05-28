@@ -42,4 +42,12 @@ public class CarsDao
         tx1.commit();
         session.close();
     }
+    public CarsEntity GetObjectWithID(int id)
+    {
+        Session session = HibernateSessionFactoryUtil.getSession();
+        session.getSessionFactory().openSession();
+        CarsEntity car = session.get(CarsEntity.class, id);
+        session.close();
+        return  car;
+    }
 }

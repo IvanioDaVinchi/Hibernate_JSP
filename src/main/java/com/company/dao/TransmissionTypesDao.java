@@ -42,4 +42,12 @@ public class TransmissionTypesDao
         tx1.commit();
         session.close();
     }
+    public TransmissiontypesEntity GetObjectWithID(int id)
+    {
+        Session session = HibernateSessionFactoryUtil.getSession();
+        session.getSessionFactory().openSession();
+        TransmissiontypesEntity transmission = session.get(TransmissiontypesEntity.class, id);
+        session.close();
+        return transmission;
+    }
 }

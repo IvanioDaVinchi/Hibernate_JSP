@@ -42,4 +42,12 @@ public class EngineTypesDao
         tx1.commit();
         session.close();
     }
+    public EnginetypesEntity GetObjectWithID(int id)
+    {
+        Session session = HibernateSessionFactoryUtil.getSession();
+        session.getSessionFactory().openSession();
+        EnginetypesEntity engine = session.get(EnginetypesEntity.class, id);
+        session.close();
+        return engine;
+    }
 }

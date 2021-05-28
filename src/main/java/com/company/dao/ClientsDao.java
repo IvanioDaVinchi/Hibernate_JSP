@@ -41,4 +41,12 @@ public class ClientsDao
         tx1.commit();
         session.close();
     }
+    public ClientsEntity GetObjectWithID(int id)
+    {
+        Session session = HibernateSessionFactoryUtil.getSession();
+        session.getSessionFactory().openSession();
+        ClientsEntity client = session.get(ClientsEntity.class, id);
+        session.close();
+        return  client;
+    }
 }

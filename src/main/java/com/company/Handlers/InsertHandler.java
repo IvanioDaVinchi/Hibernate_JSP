@@ -12,30 +12,12 @@ import java.util.Scanner;
 public class InsertHandler
 {
     static Scanner in = new Scanner(System.in);
-    public void InsertInCars()
+    public void InsertInCars(String carBrand, String carModel, Double speed, Double racing, int engineType, int transmissionType, String color, int price)
     {
-        System.out.println("Введите марку авто");
-        String carBrand = in.next();
-        System.out.println("Введите модель авто");
-        String carModel = in.next();
-        System.out.println("Введите скорость авто");
-        Double speed = in.nextDouble();
-        System.out.println("Введите разгон до 100 авто");
-        Double racing = in.nextDouble();
-        System.out.println("Введите тип двигателя авто");
-        int engineType = in.nextInt();
-        System.out.println("Введите тип трансмиссии авто");
-        int transmissionType = in.nextInt();
-        System.out.println("Введите цвет кузова авто");
-        String color = in.next();
-        System.out.println("Введите цену авто");
-        int price = in.nextInt();
         EngineTypesDao engineDao = new EngineTypesDao();
-        List<EnginetypesEntity> listEngines = engineDao.GetListEngines();
-        EnginetypesEntity engine = listEngines.get(engineType);
+        EnginetypesEntity engine = engineDao.GetObjectWithID(engineType);
         TransmissionTypesDao transmissionDao = new TransmissionTypesDao();
-        List<TransmissiontypesEntity> listTransmisson = transmissionDao.GetListTransmissions();
-        TransmissiontypesEntity transmission = listTransmisson.get(transmissionType);
+        TransmissiontypesEntity transmission = transmissionDao.GetObjectWithID(transmissionType);
         CarsEntity car = new CarsEntity();
         car.setCarBrand(carBrand);
         car.setCarModel(carModel);
@@ -50,18 +32,12 @@ public class InsertHandler
         car.setId(listCars.size()+1);
         carsDao.Insert(car);
     }
-    public void InsertInCarSupplier()
+    public void InsertInCarSupplier(int idCar, int idSupplier)
     {
-        System.out.println("Введите номер авто");
-        int idCar = in.nextInt();
-        System.out.println("Введите номер поставщика");
-        int idSupplier = in.nextInt();
         CarsDao carsDao = new CarsDao();
-        List<CarsEntity> listCars = carsDao.GetListCars();
-        CarsEntity car = listCars.get(idCar);
+        CarsEntity car = carsDao.GetObjectWithID(idCar);
         SuppliersDao suppliersDao = new SuppliersDao();
-        List<SuppliersEntity> listSuppliers = suppliersDao.GetListSuppliers();
-        SuppliersEntity supplier = listSuppliers.get(idSupplier);
+        SuppliersEntity supplier = suppliersDao.GetObjectWithID(idSupplier);
         CarSupplierEntity carSupplier = new CarSupplierEntity();
         CarsSupplerDao carsSupplerDao = new CarsSupplerDao();
         List<CarSupplierEntity> carSupplierList = carsSupplerDao.GetListCarsSupplers();
@@ -70,17 +46,9 @@ public class InsertHandler
         carSupplier.setId(carSupplierList.size()+1);
         carsSupplerDao.Insert(carSupplier);
     }
-    public void InsertInClient()
+    public void InsertInClient(String fName, String sName, String patronymic, String phoneNumber)
     {
         ClientsDao clientsDao = new ClientsDao();
-        System.out.println("Введите фамилию клиента");
-        String fName = in.next();
-        System.out.println("Введите имя клиента");
-        String sName = in.next();
-        System.out.println("Введите отчество клиента");
-        String patronymic = in.next();
-        System.out.println("Введите телефон клиента");
-        String phoneNumber = in.next();
         List<ClientsEntity> listClients = clientsDao.GetListClients();
         ClientsEntity client = new ClientsEntity();
         client.setId(listClients.size() + 1);
@@ -90,30 +58,18 @@ public class InsertHandler
         client.setPhoneNumber(phoneNumber);
         clientsDao.Insert(client);
     }
-    public void InsertInSuppliers()
+    public void InsertInSuppliers(String nameSupplier)
     {
         SuppliersDao suppliersDao = new SuppliersDao();
         SuppliersEntity supplier = new SuppliersEntity();
-        System.out.println("Введите наименование нового поставщика");
-        String nameSupplier = in.next();
         List<SuppliersEntity> listSuppliers = suppliersDao.GetListSuppliers();
         supplier.setId(listSuppliers.size() + 1);
         supplier.setNameSupplier(nameSupplier);
         suppliersDao.Insert(supplier);
     }
-    public void InsertInEmployees()
+    public void InsertInEmployees(String fName, String sName, String patronymic, String phoneNumber, String position)
     {
         EmployeesDao employeesDao = new EmployeesDao();
-        System.out.println("Введите фамилию работника");
-        String fName = in.next();
-        System.out.println("Введите имя работника");
-        String sName = in.next();
-        System.out.println("Введите отчество работника");
-        String patronymic = in.next();
-        System.out.println("Введите телефон работника");
-        String phoneNumber = in.next();
-        System.out.println("Введите должность работника");
-        String position = in.next();
         List<EmployeersEntity> listEployees = employeesDao.GetListEmployeers();
         EmployeersEntity employee = new EmployeersEntity();
         employee.setId(listEployees.size() + 1);
@@ -124,14 +80,8 @@ public class InsertHandler
         employee.setPosition(position);
         employeesDao.Insert(employee);
     }
-    public void InsertInEngineTypes()
+    public void InsertInEngineTypes(String nameEngine, Double capacity, int power)
     {
-        System.out.println("Введите ниаименование двигателя");
-        String nameEngine = in.next();
-        System.out.println("Введите объем двигателя");
-        Double capacity = in.nextDouble();
-        System.out.println("Введите мощность двигателя");
-        int power = in.nextInt();
         EngineTypesDao engineDao = new EngineTypesDao();
         EnginetypesEntity engineType = new EnginetypesEntity();
         List<EnginetypesEntity> listEngines = engineDao.GetListEngines();
@@ -141,12 +91,8 @@ public class InsertHandler
         engineType.setEnginePower(power);
         engineDao.Insert(engineType);
     }
-    public void InsertInTransmissionType()
+    public void InsertInTransmissionType(String nameT, int countGears)
     {
-        System.out.println("Введите наименование трансимссии");
-        String nameT = in.next();
-        System.out.println("Введите количство передач");
-        int countGears = in.nextInt();
         TransmissionTypesDao transmissionTypesDao = new TransmissionTypesDao();
         TransmissiontypesEntity transmission = new TransmissiontypesEntity();
         List<TransmissiontypesEntity> listTransmission = transmissionTypesDao.GetListTransmissions();
@@ -155,26 +101,15 @@ public class InsertHandler
         transmission.setNumberOfGears(countGears);
         transmissionTypesDao.Insert(transmission);
     }
-    public void InsertInSales() throws ParseException
+    public void InsertInSales(int idClient, int idCar, int idEmployee, String date) throws ParseException
     {
         SalesDao salesDao = new SalesDao();
-        System.out.println("Введите id клиента");
-        int idClient = in.nextInt();
-        System.out.println("Введите id авто");
-        int idCar = in.nextInt();
-        System.out.println("Введите id сотрудника");
-        int idEmployee = in.nextInt();
-        System.out.println("Введите дату продажи");
-        String date = in.next();
         ClientsDao clientsDao = new ClientsDao();
         CarsDao carsDao = new CarsDao();
         EmployeesDao employeesDao = new EmployeesDao();
-        List<ClientsEntity> listClients = clientsDao.GetListClients();
-        List<CarsEntity> listCars = carsDao.GetListCars();
-        List<EmployeersEntity> listEmployee = employeesDao.GetListEmployeers();
-        ClientsEntity client = listClients.get(idClient);
-        CarsEntity car = listCars.get(idCar);
-        EmployeersEntity employee = listEmployee.get(idEmployee);
+        ClientsEntity client = clientsDao.GetObjectWithID(idClient);
+        CarsEntity car = carsDao.GetObjectWithID(idCar);
+        EmployeersEntity employee = employeesDao.GetObjectWithID(idEmployee);
         SalesEntity sale = new SalesEntity();
         List<SalesEntity> listSales = salesDao.GetListSales();
         sale.setId(listSales.size() + 1);
