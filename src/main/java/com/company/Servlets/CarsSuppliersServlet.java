@@ -53,7 +53,7 @@ public class CarsSuppliersServlet extends HttpServlet
                     updateCarSupplier(request, response);
                     break;
                 default:
-                    listUser(request, response);
+                    listCarSupplier(request, response);
                     break;
             }
         }
@@ -62,7 +62,7 @@ public class CarsSuppliersServlet extends HttpServlet
             throw new ServletException(ex);
         }
     }
-    private void listUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void listCarSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         List <CarSupplierEntity> listCarsSupplier = carsSupplerDaoDao.GetListCarsSupplers();
         request.setAttribute("listCarsSupplier", listCarsSupplier);

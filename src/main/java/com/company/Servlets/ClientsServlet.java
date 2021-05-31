@@ -53,7 +53,7 @@ public class ClientsServlet extends HttpServlet
                     updateClient(request, response);
                     break;
                 default:
-                    listUser(request, response);
+                    listClients(request, response);
                     break;
             }
         }
@@ -62,17 +62,17 @@ public class ClientsServlet extends HttpServlet
             throw new ServletException(ex);
         }
     }
-    private void listUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void listClients(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         List <ClientsEntity> listCars = clientsDao.GetListClients();
-        request.setAttribute("listCars", listCars);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cars-list.jsp");
+        request.setAttribute("listClient", listCars);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("client-list.jsp");
         dispatcher.forward(request, response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cars-form.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("clients-form.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -80,8 +80,8 @@ public class ClientsServlet extends HttpServlet
     {
         int id = Integer.parseInt(request.getParameter("id"));
         ClientsEntity existingClient = clientsDao.GetObjectWithID(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cars-form.jsp");
-        request.setAttribute("car", existingClient);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("clients-form.jsp");
+        request.setAttribute("client", existingClient);
         dispatcher.forward(request, response);
     }
 
