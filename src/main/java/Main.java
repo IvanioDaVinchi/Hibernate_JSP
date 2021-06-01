@@ -52,12 +52,5 @@ public class Main
         {
             session.close();
         }
-        MenuHandler menuHandler = new MenuHandler();
-        while(true)
-        {
-            menuHandler.PrintMenu();
-            int sw = in.nextInt();
-            menuHandler.SwitchForMenu(sw);
-        }
     }
 }

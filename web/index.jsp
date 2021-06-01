@@ -11,8 +11,6 @@
     <title>PolskaSait</title>
 </head>
     <body>
-        <table>
-
-        </table>
+    <a href="cars-list.jsp">Start</a>
     </body>
 </html>
