@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Polska Sait</title>
@@ -13,28 +14,28 @@
     </h2>
 </center>
 <div align="center">
-        <if test="${car == null}">
-        <form action="CarsServlet/insert" method="post"/>
-        </if>
+        <c:if test="${car == null}">
+        <form action="/CarsServlet/insert" method="post"/>
+        </c:if>
             <table border="1" cellpadding="5">
                 <caption>
                     <h2>
-                        <if test="${car != null}">
+                        <c:if test="${car != null}">
                             Edit Car
-                        </if>
-                        <if test="${car == null}">
+                        </c:if>
+                        <c:if test="${car == null}">
                             Add New Car
-                        </if>
+                        </c:if>
                     </h2>
                 </caption>
-                <if test="${car != null}">
-                    <input type="hidden" name="id" value="<out value='${car.getId()}' />" />
-                </if>
+                <c:if test="${car != null}">
+                    <input type="hidden" name="id" value="<c:out value='${car.getId()}' />" />
+                </c:if>
                 <tr>
                     <th>carBrand: </th>
                     <td>
                         <input type="text" name="carBrand" size="45"
-                               value="<out value='${car.getCarBrand()}' />"
+                               value="<c:out value='${car.getCarBrand()}' />"
                         />
                     </td>
                 </tr>
@@ -42,7 +43,7 @@
                     <th>carModel: </th>
                     <td>
                         <input type="text" name="carModel" size="45"
-                               value="<out value='${car.getModel()}' />"
+                               value="<c:out value='${car.getModel()}' />"
                         />
                     </td>
                 </tr>
@@ -50,7 +51,7 @@
                     <th>Speed: </th>
                     <td>
                         <input type="text" name="Speed" size="15"
-                               value="<out value='${car.getSpeed()}' />"
+                               value="<c:out value='${car.getSpeed()}' />"
                         />
                     </td>
                 </tr>
@@ -58,7 +59,7 @@
                     <th>Racing: </th>
                     <td>
                         <input type="text" name="Racing" size="15"
-                               value="<out value='${car.getRacing()}' />"
+                               value="<c:out value='${car.getRacing()}' />"
                         />
                     </td>
                 </tr>
@@ -66,7 +67,7 @@
                     <th>EngineType: </th>
                     <td>
                         <input type="text" name="EngineType" size="15"
-                               value="<out value='${car.getEngineTypeByIdEngine()}' />"
+                               value="<c:out value='${car.getEngineTypeByIdEngine().getId()}' />"
                         />
                     </td>
                 </tr>
@@ -74,7 +75,7 @@
                     <th>TransmissionType: </th>
                     <td>
                         <input type="text" name="TransmissionType" size="15"
-                               value="<out value='${car.getTransmissionTypeByIdTransmission()}' />"
+                               value="<c:out value='${car.getTransmissionTypeByIdTransmission().getId()}' />"
                         />
                     </td>
                 </tr>
@@ -82,7 +83,7 @@
                     <th>CarColor: </th>
                     <td>
                         <input type="text" name="CarColor" size="15"
-                               value="<out value='${car.getCarColor()}' />"
+                               value="<c:out value='${car.getCarColor()}' />"
                         />
                     </td>
                 </tr>
@@ -90,7 +91,7 @@
                     <th>Price: </th>
                     <td>
                         <input type="text" name="Price" size="15"
-                               value="<out value='${car.getPrice()}' />"
+                               value="<c:out value='${car.getPrice()}' />"
                         />
                     </td>
                 </tr>

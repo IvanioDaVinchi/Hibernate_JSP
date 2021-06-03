@@ -65,7 +65,7 @@ public class ClientsServlet extends HttpServlet
     {
         List <ClientsEntity> listCars = clientsDao.GetListClients();
         request.setAttribute("listClient", listCars);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("client-list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("clients-list.jsp");
         dispatcher.forward(request, response);
     }
 

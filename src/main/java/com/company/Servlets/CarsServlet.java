@@ -34,6 +34,7 @@ public class CarsServlet extends HttpServlet
         String action = request.getServletPath();
         try
         {
+            //listCars(request, response);
             switch (action)
             {
                 case "/new":
@@ -65,7 +66,7 @@ public class CarsServlet extends HttpServlet
     {
         List <CarsEntity> listCars = carsDao.GetListCars();
         request.setAttribute("listCars", listCars);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cars-list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/cars-list.jsp");
         dispatcher.forward(request, response);
     }
 

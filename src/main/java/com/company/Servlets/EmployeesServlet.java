@@ -65,7 +65,7 @@ public class EmployeesServlet extends HttpServlet
     {
         List <EmployeersEntity> listEmployee = employeesDao.GetListEmployeers();
         request.setAttribute("listEmployee", listEmployee);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("employee-list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("employees-list.jsp");
         dispatcher.forward(request, response);
     }
 

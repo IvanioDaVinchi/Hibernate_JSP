@@ -68,6 +68,6 @@ public class TransmissiontypesEntity
     @Override
     public String toString()
     {
-        return "TransmissionType - {id = " + id + ", nameTransmission = " + nameTransmission + ", numberOfGears" + numberOfGears + "}";
+        return String.valueOf(id);
     }
 }

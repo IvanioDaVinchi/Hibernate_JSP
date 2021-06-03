@@ -7,6 +7,8 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <title>polska Sait</title>
@@ -33,24 +35,24 @@
             <th>CarColor</th>
             <th>Price</th>
         </tr>
-        <forEach var= "car" items = "${listCars}">
+        <c:forEach var= "car" items = "${listCars}">
             <tr>
-                <td><out value= "${car.getId()}" /></td>
-                <td><out value= "${car.getCarBrand()}" /></td>
-                <td><out value= "${car.getCarModel()}" /></td>
-                <td><out value= "${car.getSpeed()}" /></td>
-                <td><out value= "${car.getRacing()}" /></td>
-                <td><out value= "${car.getEngineTypeByIdEngine()}" /></td>
-                <td><out value= "${car.getTransmissionTypeByIdTransmission()}" /></td>
-                <td><out value= "${car.getCarColor()}" /></td>
-                <td><out value= "${car.getPrice()}" /></td>
+                <td><c:out value= "${car.getId()}" /></td>
+                <td><c:out value= "${car.getCarBrand()}" /></td>
+                <td><c:out value= "${car.getCarModel()}" /></td>
+                <td><c:out value= "${car.getSpeed()}" /></td>
+                <td><c:out value= "${car.getRacing()}" /></td>
+                <td><c:out value= "${car.getEngineTypeByIdEngine().getId()}" /></td>
+                <td><c:out value= "${car.getTransmissionTypeByIdTransmission().getId()}" /></td>
+                <td><c:out value= "${car.getCarColor()}" /></td>
+                <td><c:out value= "${car.getPrice()}" /></td>
                 <td>
-                    <a href="edit?id=<out value='{car.id}' />">Edit</a>
+                    <a href="/edit?id=<c:out value='${car.getId()}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<out value='{car.id}' />">Delete</a>
+                    <a href="delete?id=<c:out value='${car.getId()}' />">Delete</a>
                 </td>
             </tr>
-        </forEach>
+        </c:forEach>
     </table>
 </div>
 </body>

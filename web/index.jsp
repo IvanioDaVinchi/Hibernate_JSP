@@ -10,7 +10,19 @@
 <head>
     <title>PolskaSait</title>
 </head>
-    <body>
-    <a href="cars-list.jsp">Start</a>
-    </body>
+    <style>
+        .redS {
+            text-shadow: red 0 0 10px;
+        }
+    </style>
+        <body>
+            <center><b><h3 class="redS"><a href="CarsServlet"><font color = "black">Cars</font></a></h3></b></center>
+            <center><b><h3 class="redS"><a href="CarsSuppliersServlet"><font color = "black">CarsSupplier</font></a></h3></b></center>
+            <center><b><h3 class="redS"><a href="ClientsServlet"><font color = "black">Clients</font></a></h3></b></center>
+            <center><b><h3 class="redS"><a href="EmployeesServlet"><font color = black>Employee</font></a></h3></b></center>
+            <center><b><h3 class="redS"><a href="EngineTypesServlet"><font color = black>EngineTypes</font></a></h3></b></center>
+            <center><b><h3 class="redS"><a href="TransmissionTypesServlet"><font color = black>TransmissionTypes</font></a></h3></b></center>
+            <center><b><h3 class="redS"><a href="SalesServlet"><font color = black>Sales</font></a></h3></b></center>
+            <center><b><h3 class="redS"><a href="SuppliersServlet"><font color = black>Suppliers</font></a></h3></b></center>
+        </body>
 </html>
