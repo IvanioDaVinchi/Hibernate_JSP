@@ -16,7 +16,7 @@
 <body>
 <center>
     <h2>
-        <a href="cars-from.jsp">Add New Client</a>
+        <a href="clients-form.jsp">Add New Client</a>
 
     </h2>
 </center>
