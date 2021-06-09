@@ -13,16 +13,14 @@
 </head>
 <body>
 <center>
-    <h1></h1>
     <h2>
         &nbsp;&nbsp;&nbsp;
-        <a href="CarsServlet">List All carsSupplier</a>
-
+        <a href="/EngineTypesServlet">List Engines</a>
     </h2>
 </center>
 <div align="center">
     <c:if test="${engine == null}">
-        <form action="/CarsSuppliersServlet/insert" method="post"/>
+        <form action="/EngineTypesServlet" method="post"/>
     </c:if>
     <table border="1" cellpadding="5">
         <caption>
@@ -42,7 +40,7 @@
             <th>nameEngine: </th>
             <td>
                 <input type="text" name="nameEngine" size="45"
-                       value="<c:out value='${engine.getCarsByIdCar().getId()}' />"
+                       value="<c:out value='${engine.get()}' />"
                 />
             </td>
         </tr>
@@ -50,7 +48,7 @@
             <th>engineCapacity: </th>
             <td>
                 <input type="text" name="engineCapacity" size="45"
-                       value="<c:out value='${engine.getSupplierByIdSupplier().getId()}' />"
+                       value="<c:out value='${engine.getEngineCapacity()}' />"
                 />
             </td>
         </tr>
@@ -64,11 +62,10 @@
         </tr>
         <tr>
             <td colspan="2" align="center">
-                <input type="submit" value="Save" />
+                <input type="submit" value="Save" name="insertKnopka" />
             </td>
         </tr>
     </table>
-    </form>
 </div>
 </body>
 </html>

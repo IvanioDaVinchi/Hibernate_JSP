@@ -37,14 +37,15 @@
                 <td><c:out value= "${client.getSecondName()}" /></td>
                 <td><c:out value= "${client.getPatronymic()}" /></td>
                 <td><c:out value= "${client.getPhoneNumber()}" /></td>
-                <td>
-                    <a href="/edit?id=<c:out value='${client.getId()}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<c:out value='${client.getId()}' />">Delete</a>
-                </td>
             </tr>
         </c:forEach>
     </table>
+    <br>
+    <center>
+        <input type="number" name = "idBox" size = "10" />
+        <input type="submit" value="Delete" name="deleteKnopka" />
+    </center>
+    </br>
 </div>
 </body>
 </html>

@@ -27,38 +27,51 @@ public class CarsSuppliersServlet extends HttpServlet
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        doGet(request, response);
+        if(request.getParameter("insertKnopka") != null)
+        {
+            try
+            {
+                insertCarSupplier(request, response);
+            }
+            catch
+            (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        if(request.getParameter("deleteKnopka") != null)
+        {
+            try
+            {
+                deleteCarSupplier(request, response);
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        if(request.getParameter("updateKnopka") != null)
+        {
+            try
+            {
+                updateCarSupplier(request, response);
+            }
+            catch
+            (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String action = request.getServletPath();
         try
         {
-            switch (action)
-            {
-                case "/new":
-                    showNewForm(request, response);
-                    break;
-                case "/insert":
-                    insertCarSupplier(request, response);
-                    break;
-                case "/delete":
-                    deleteCarSupplier(request, response);
-                    break;
-                case "/edit":
-                    showEditForm(request, response);
-                    break;
-                case "/update":
-                    updateCarSupplier(request, response);
-                    break;
-                default:
-                    listCarSupplier(request, response);
-                    break;
-            }
+            listCarSupplier(request, response);
         }
-        catch (SQLException ex)
+        catch (SQLException e)
         {
-            throw new ServletException(ex);
+            e.printStackTrace();
         }
     }
     private void listCarSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
@@ -69,45 +82,42 @@ public class CarsSuppliersServlet extends HttpServlet
         dispatcher.forward(request, response);
     }
 
-    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("carsSuppliers-form.jsp");
-        dispatcher.forward(request, response);
-    }
-
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException
-    {
-        int id = Integer.parseInt(request.getParameter("id"));
-        CarSupplierEntity existingCarSupplier = carsSupplerDaoDao.GetObjectWithID(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("carsSuppliers-form.jsp");
-        request.setAttribute("carSupplier", existingCarSupplier);
-        dispatcher.forward(request, response);
-
-    }
-
     private void insertCarSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
     {
         int idCar = new Integer(request.getParameter("idCar"));
         int idSupplier = new Integer(request.getParameter("idSupplier"));
         InsertHandler insertHandler = new InsertHandler();
         insertHandler.InsertInCarSupplier(idCar, idSupplier);
-        response.sendRedirect("list");
+        try
+        {
+            listCarSupplier(request, response);
+        }
+        catch (SQLException | ServletException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private void updateCarSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
     {
-        int id = new Integer(request.getParameter("id"));
+        int id = new Integer(request.getParameter("idBoxUpdate"));
         int idCar = new Integer(request.getParameter("idCar"));
         int idSupplier = new Integer(request.getParameter("idSupplier"));
         UpdateHandler updateHandler = new UpdateHandler();
         updateHandler.UpdateCarsSupplier(id, idCar, idSupplier);
-        response.sendRedirect("list");
+        try
+        {
+            listCarSupplier(request, response);
+        }
+        catch (SQLException | ServletException e)
+        {
+            e.printStackTrace();
+        }
     }
 
-    private void deleteCarSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
-    {
-        int id = Integer.parseInt(request.getParameter("id"));
+    private void deleteCarSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("idBox"));
         carsSupplerDaoDao.Delete(id);
-        response.sendRedirect("list");
+        listCarSupplier(request, response);
     }
 }

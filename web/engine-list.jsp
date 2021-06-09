@@ -16,7 +16,7 @@
 <body>
 <center>
     <h2>
-        <a href="cars-from.jsp">Add New Engine</a>
+        <a href="engine-form.jsp">Add New Engine</a>
 
     </h2>
 </center>
@@ -35,14 +35,15 @@
                 <td><c:out value= "${engine.getNameEngine()}" /></td>
                 <td><c:out value= "${engine.getEngineCapacity()}" /></td>
                 <td><c:out value= "${engine.getEnginePower()}" /></td>
-                <td>
-                    <a href="edit?id=<c:out value='${engine.getId()}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<c:out value='${engine.getId()}' />">Delete</a>
-                </td>
             </tr>
         </c:forEach>
     </table>
+    <br>
+    <center>
+        <input type="number" name = "idBox" size = "10" />
+        <input type="submit" value="Delete" name="deleteKnopka" />
+    </center>
+    </br>
 </div>
 </body>
 </html>

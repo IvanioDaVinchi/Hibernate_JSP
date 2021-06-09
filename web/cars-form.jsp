@@ -9,13 +9,13 @@
     <h1></h1>
     <h2>
         &nbsp;&nbsp;&nbsp;
-        <a href="cars-list.jsp">List All Cars</a>
+        <a href="/CarsServlet">List All Cars</a>
 
     </h2>
 </center>
 <div align="center">
         <c:if test="${car == null}">
-        <form action="/CarsServlet/insert" method="post"/>
+        <form action="${pageContext.request.contextPath}/CarsServlet" method="post">
         </c:if>
             <table border="1" cellpadding="5">
                 <caption>
@@ -50,7 +50,7 @@
                 <tr>
                     <th>Speed: </th>
                     <td>
-                        <input type="text" name="Speed" size="15"
+                        <input type="text" name="speed" size="15"
                                value="<c:out value='${car.getSpeed()}' />"
                         />
                     </td>
@@ -58,7 +58,7 @@
                 <tr>
                     <th>Racing: </th>
                     <td>
-                        <input type="text" name="Racing" size="15"
+                        <input type="text" name="racing" size="15"
                                value="<c:out value='${car.getRacing()}' />"
                         />
                     </td>
@@ -66,7 +66,7 @@
                 <tr>
                     <th>EngineType: </th>
                     <td>
-                        <input type="text" name="EngineType" size="15"
+                        <input type="text" name="engineType" size="15"
                                value="<c:out value='${car.getEngineTypeByIdEngine().getId()}' />"
                         />
                     </td>
@@ -74,7 +74,7 @@
                 <tr>
                     <th>TransmissionType: </th>
                     <td>
-                        <input type="text" name="TransmissionType" size="15"
+                        <input type="text" name="transmissionType" size="15"
                                value="<c:out value='${car.getTransmissionTypeByIdTransmission().getId()}' />"
                         />
                     </td>
@@ -82,7 +82,7 @@
                 <tr>
                     <th>CarColor: </th>
                     <td>
-                        <input type="text" name="CarColor" size="15"
+                        <input type="text" name="color" size="15"
                                value="<c:out value='${car.getCarColor()}' />"
                         />
                     </td>
@@ -90,14 +90,14 @@
                 <tr>
                     <th>Price: </th>
                     <td>
-                        <input type="text" name="Price" size="15"
+                        <input type="text" name="price" size="15"
                                value="<c:out value='${car.getPrice()}' />"
                         />
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" value="Save" />
+                        <input type="submit" value="Save" name="insertKnopka" />
                     </td>
                 </tr>
             </table>

@@ -16,13 +16,13 @@
     <h1></h1>
     <h2>
         &nbsp;&nbsp;&nbsp;
-        <a href="CarsServlet">List All carsSupplier</a>
+        <a href="/CarsSuppliersServlet">List All CarsSupplier</a>
 
     </h2>
 </center>
 <div align="center">
     <c:if test="${carSupplier == null}">
-        <form action="/CarsSuppliersServlet/insert" method="post"/>
+        <form action="${pageContext.request.contextPath}/CarsSuppliersServlet" method="post">
     </c:if>
     <table border="1" cellpadding="5">
         <caption>
@@ -39,7 +39,7 @@
             <input type="hidden" name="id" value="<c:out value='${carSupplier.getId()}' />" />
         </c:if>
         <tr>
-            <th>carBrand: </th>
+            <th>idCar: </th>
             <td>
                 <input type="text" name="idCar" size="45"
                        value="<c:out value='${carSupplier.getCarsByIdCar().getId()}' />"
@@ -47,7 +47,7 @@
             </td>
         </tr>
         <tr>
-            <th>carModel: </th>
+            <th>idSupplier: </th>
             <td>
                 <input type="text" name="idSupplier" size="45"
                        value="<c:out value='${carSupplier.getSupplierByIdSupplier().getId()}' />"
@@ -56,7 +56,7 @@
         </tr>
         <tr>
             <td colspan="2" align="center">
-                <input type="submit" value="Save" />
+                <input type="submit" value="Save" name="insertKnopka" />
             </td>
         </tr>
     </table>

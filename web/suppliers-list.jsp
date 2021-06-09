@@ -30,14 +30,15 @@
             <tr>
                 <td><c:out value= "${supplier.getId()}" /></td>
                 <td><c:out value= "${supplier.getNameSupplier()}" /></td>
-                <td>
-                    <a href="edit?id=<c:out value='${supplier.getId()}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<c:out value='${supplier.getId()}' />">Delete</a>
-                </td>
             </tr>
         </c:forEach>
     </table>
+    <br>
+    <center>
+        <input type="number" name = "idBox" size = "10" />
+        <input type="submit" value="Delete" name="deleteKnopka" />
+    </center>
+    </br>
 </div>
 </body>
 </html>

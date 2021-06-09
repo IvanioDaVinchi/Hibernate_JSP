@@ -13,16 +13,14 @@
 </head>
 <body>
 <center>
-    <h1></h1>
     <h2>
         &nbsp;&nbsp;&nbsp;
-        <a href="ClientsServlet">List All Clients</a>
-
+        <a href="/ClientsServlet">List All Clients</a>
     </h2>
 </center>
 <div align="center">
     <c:if test="${client == null}">
-        <form action="/ClientsServlet/insert" method="post"/>
+        <form action="/ClientsServlet" method="post"/>
     </c:if>
     <table border="1" cellpadding="5">
         <caption>
@@ -35,7 +33,7 @@
                 </c:if>
             </h2>
         </caption>
-        <c:if test="${car != null}">
+        <c:if test="${client != null}">
             <input type="hidden" name="id" value="<c:out value='${client.getId()}' />" />
         </c:if>
         <tr>
@@ -72,11 +70,10 @@
         </tr>
         <tr>
             <td colspan="2" align="center">
-                <input type="submit" value="Save" />
+                <input type="submit" value="Save" name="insertKnopka" />
             </td>
         </tr>
     </table>
-    </form>
 </div>
 </body>
 </html>

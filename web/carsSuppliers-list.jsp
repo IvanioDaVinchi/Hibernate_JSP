@@ -21,6 +21,7 @@
     </h2>
 </center>
 <div align="center">
+    <form action="${pageContext.request.contextPath}/CarsSuppliersServlet" method="post">
     <table border="1" cellpadding="5">
         <caption><h2>List of CarsSupplier</h2></caption>
         <tr>
@@ -33,14 +34,27 @@
                 <td><c:out value= "${carSupplier.getId()}" /></td>
                 <td><c:out value= "${carSupplier.getCarsByIdCar().getId()}" /></td>
                 <td><c:out value= "${carSupplier.getSupplierByIdSupplier().getId()}" /></td>
-                <td>
-                    <a href="/edit?id=<c:out value='${carSupplier.getId()}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<c:out value='${carSupplier.getId()}' />">Delete</a>
-                </td>
             </tr>
         </c:forEach>
     </table>
+    <br>
+    <center>
+        <input type="number" name = "idBox" size = "10" />
+        <input type="submit" value="Delete" name="deleteKnopka" />
+    </center>
+    </br>
+    <br>
+    <center>
+        <label>id</label>
+        <input type = text name = "idBoxUpdate" size = 2/>
+        <label>idCar</label>
+        <input type = text name = "idCar" size = 2/>
+        <label>idSupplier</label>
+        <input type = text name = "idSupplier" size = 2/>
+        <input type = submit value="Update" name = "updateKnopka" />
+    </center>
+    </br>
+    </form>
 </div>
 </body>
 </html>

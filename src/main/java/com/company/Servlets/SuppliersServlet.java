@@ -27,38 +27,51 @@ public class SuppliersServlet extends HttpServlet
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        doGet(request, response);
+        if(request.getParameter("insertKnopka") != null)
+        {
+            try
+            {
+                insertSupplier(request, response);
+            }
+            catch
+            (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        if(request.getParameter("deleteKnopka") != null)
+        {
+            try
+            {
+                deleteSupplier(request, response);
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        if(request.getParameter("updateKnopka") != null)
+        {
+            try
+            {
+                updateSupplier(request, response);
+            }
+            catch
+            (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String action = request.getServletPath();
         try
         {
-            switch (action)
-            {
-                case "/new":
-                    showNewForm(request, response);
-                    break;
-                case "/insert":
-                    insertSupplier(request, response);
-                    break;
-                case "/delete":
-                    deleteSupplier(request, response);
-                    break;
-                case "/edit":
-                    showEditForm(request, response);
-                    break;
-                case "/update":
-                    updateSupplier(request, response);
-                    break;
-                default:
-                    listSuppliers(request, response);
-                    break;
-            }
+            listSuppliers(request, response);
         }
-        catch (SQLException ex)
+        catch (SQLException e)
         {
-            throw new ServletException(ex);
+            e.printStackTrace();
         }
     }
     private void listSuppliers(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
@@ -66,21 +79,6 @@ public class SuppliersServlet extends HttpServlet
         List <SuppliersEntity> listSuppliers = suppliersDao.GetListSuppliers();
         request.setAttribute("listSuppliers", listSuppliers);
         RequestDispatcher dispatcher = request.getRequestDispatcher("suppliers-list.jsp");
-        dispatcher.forward(request, response);
-    }
-
-    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("supplier-form.jsp");
-        dispatcher.forward(request, response);
-    }
-
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException
-    {
-        int id = Integer.parseInt(request.getParameter("id"));
-        SuppliersEntity existingSupplier = suppliersDao.GetObjectWithID(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("supplier-form.jsp");
-        request.setAttribute("supplier", existingSupplier);
         dispatcher.forward(request, response);
     }
 
@@ -92,19 +90,17 @@ public class SuppliersServlet extends HttpServlet
         response.sendRedirect("list");
     }
 
-    private void updateSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
-    {
+    private void updateSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         int id = new Integer(request.getParameter("id"));
         String nameSupplier = request.getParameter("nameSupplier");
         UpdateHandler updateHandler = new UpdateHandler();
         updateHandler.UpdateSupplier(id,nameSupplier);
-        response.sendRedirect("list");
+        listSuppliers(request, response);
     }
 
-    private void deleteSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
-    {
+    private void deleteSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
         suppliersDao.Delete(id);
-        response.sendRedirect("list");
+        listSuppliers(request, response);
     }
 }

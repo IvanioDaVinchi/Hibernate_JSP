@@ -33,14 +33,15 @@
                 <td><c:out value= "${transmission.getId()}" /></td>
                 <td><c:out value= "${transmission.getNameTransmission()}" /></td>
                 <td><c:out value= "${transmission.getNumberOfGears()}" /></td>
-                <td>
-                    <a href="edit?id=<c:out value='${transmission.getId()}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<c:out value='${transmission.getId()}' />">Delete</a>
-                </td>
             </tr>
         </c:forEach>
     </table>
+    <br>
+    <center>
+        <input type="number" name = "idBox" size = "10" />
+        <input type="submit" value="Delete" name="deleteKnopka" />
+    </center>
+    </br>
 </div>
 </body>
 </html>

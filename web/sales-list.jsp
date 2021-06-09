@@ -36,14 +36,15 @@
                 <td><c:out value= "${sale.getClientsByIdClient().getId()}" /></td>
                 <td><c:out value= "${sale.getCarsByIdCar().getId()}" /></td>
                 <td><c:out value= "${sale.getEmployeersByIdEmployee().getId()}" /></td>
-                <td>
-                    <a href="edit?id=<c:out value='${sale.getId()}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<c:out value='${sale.getId()}' />">Delete</a>
-                </td>
             </tr>
         </c:forEach>
     </table>
+    <br>
+    <center>
+        <input type="number" name = "idBox" size = "10" />
+        <input type="submit" value="Delete" name="deleteKnopka" />
+    </center>
+    </br>
 </div>
 </body>
 </html>
