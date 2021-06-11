@@ -39,6 +39,15 @@
         <input type="submit" value="Delete" name="deleteKnopka" />
     </center>
     </br>
+    <br>
+        <center>
+            <label>id</label>
+            <input type="text" name = "idBoxUpdate" size = 10>
+            <label>nameSupplier</label>
+            <input type="text" name = "nameSupplier" size = 10>
+            <input type="submit" name = "updateKnopka">
+        </center>
+    </br>
 </div>
 </body>
 </html>
