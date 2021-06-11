@@ -83,4 +83,14 @@
         <servlet-name>TransmissionTypesServlet</servlet-name>
         <url-pattern>/TransmissionTypesServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description></description>
+        <display-name>CarSupplierGUIServlet</display-name>
+        <servlet-name>CarSupplierGUIServlet</servlet-name>
+        <servlet-class>com.company.Servlets.CarSupplierGUIServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CarSupplierGUIServlet</servlet-name>
+        <url-pattern>/CarSupplierGUIServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

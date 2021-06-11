@@ -24,5 +24,6 @@
             <center><b><h3 class="redS"><a href="TransmissionTypesServlet"><font color = black>TransmissionTypes</font></a></h3></b></center>
             <center><b><h3 class="redS"><a href="SalesServlet"><font color = black>Sales</font></a></h3></b></center>
             <center><b><h3 class="redS"><a href="SuppliersServlet"><font color = black>Suppliers</font></a></h3></b></center>
+            <center><b><h3 class="redS"><a href="CarSupplierGUIServlet"><font color = black>carSypplierGUI</font></a></h3></b></center>
         </body>
 </html>
