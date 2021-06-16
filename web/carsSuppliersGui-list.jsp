@@ -15,9 +15,10 @@
 </head>
 <body>
 <div align="center">
-    <form action="${pageContext.request.contextPath}/CarsSuppliersServlet" method="post">
+    <form action="${pageContext.request.contextPath}/CarSupplierGUIServlet" method="post">
         <table border="1" cellpadding="5">
             <caption><h2>List of CarsSupplier</h2></caption>
+            <caption><h2>"${listCarsSupplier.size()}"</h2></caption>
             <tr>
                 <th>ID</th>
                 <th>Car</th>
@@ -26,8 +27,8 @@
             <c:forEach var= "carSupplier" items = "${listCarsSupplier}">
                 <tr>
                     <td><c:out value= "${carSupplier.getId()}" /></td>
-                    <td><c:out value= "${listCars.get(carSupplier.getCarsByIdCar().getId()).getCarBrand()}" /></td>
-                    <td><c:out value= "${listSupplier.get(carSupplier.getSupplierByIdSupplier().getId()).getNameSupplier()}" /></td>
+                    <td><c:out value= "${carSupplier.getCarsByIdCar().getCarBrand()}" /></td>
+                    <td><c:out value= "${carSupplier.getSupplierByIdSupplier().getNameSupplier()}" /></td>
                 </tr>
             </c:forEach>
         </table>
@@ -53,9 +54,10 @@
                 <label>Фильтры:</label>
             </center>
         <center>
-            <select name="spisok">
+            <select name="spisokCars">
+                <option>Выберите из Списка</option>>
                 <option>Nissan</option>
-                <option>Bmw</option>
+                <option>BMW</option>
                 <option>Audi</option>
                 <option>Ford</option>
             </select>
@@ -63,8 +65,24 @@
         </br>
         <br>
             <center>
-                <input type = submit value="Отсортировать" name = "filterKnopka" />
+                <input type = submit value="Отсортировать по машинам" name = "filterKnopkaCars" />
             </center>
+        </br>
+        <br>
+        <center>
+            <select name="spisokSuppliers">
+                <option>Выберите из Списка</option>>
+                <option>JapaniceCarSup</option>
+                <option>CarFromGerman</option>
+                <option>AmerSup</option>
+                <option>AMSP</option>
+            </select>
+        </center>
+        </br>
+        <br>
+        <center>
+            <input type = submit value="Отсортировать по поставщикам" name = "filterKnopkaSuppliers" />
+        </center>
         </br>
     </form>
 </div>

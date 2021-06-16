@@ -9,6 +9,7 @@ import com.company.dao.SuppliersDao;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -32,7 +33,69 @@ public class CarSupplierGUIServlet extends HttpServlet
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-
+        if(request.getParameter("filterKnopkaCars") != null)
+        {
+            String brand = request.getParameter("spisokCars");
+            System.out.println(brand);
+            List <CarsEntity> listCars = carsDao.GetListCars();
+            List<CarsEntity> listCarsWithFilters = new ArrayList<CarsEntity>();
+            List<CarSupplierEntity> listCarsSuppliersWithFilters = new ArrayList<CarSupplierEntity>();
+            for(int i = 0; i < listCars.size(); i++) // берем все машины по названию
+            {
+                System.out.println(listCars.get(i).getCarBrand());
+                if(listCars.get(i).getCarBrand().equals(brand))
+                {
+                    listCarsWithFilters.add(listCars.get(i));
+                }
+            }
+            List <CarSupplierEntity> listCarsSupplier = carsSupplerDao.GetListCarsSupplers();
+            for(int i = 0; i < listCarsSupplier.size(); i++) // берем все поставки по машинам
+            {
+                for(int j = 0; j < listCarsWithFilters.size(); j++)
+                {
+                    System.out.println(listCarsSupplier.get(i).getCarsByIdCar().getId() + " - - - " + listCarsWithFilters.get(j).getId());
+                    if(Integer.valueOf(listCarsSupplier.get(i).getCarsByIdCar().getId()).equals(listCarsWithFilters.get(j).getId()))
+                    {
+                        System.out.println("yvoyvoy");
+                        listCarsSuppliersWithFilters.add(listCarsSupplier.get(i));
+                    }
+                }
+            }
+            request.setAttribute("listCarsSupplier", listCarsSuppliersWithFilters);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("carsSuppliersGui-list.jsp");
+            dispatcher.forward(request, response);
+        }
+        if(request.getParameter("filterKnopkaSuppliers") != null)
+        {
+            String supplier = request.getParameter("spisokSuppliers");
+            System.out.println(supplier);
+            List <SuppliersEntity> listSuppliers = suppliersDao.GetListSuppliers();
+            List<SuppliersEntity> listSuppliersWithFilters = new ArrayList<SuppliersEntity>();
+            List<CarSupplierEntity> listCarsSuppliersWithFilters = new ArrayList<CarSupplierEntity>();
+            for(int i = 0; i < listSuppliers.size(); i++) // берем все машины по названию
+            {
+                if(listSuppliers.get(i).getNameSupplier().equals(supplier))
+                {
+                    listSuppliersWithFilters.add(listSuppliers.get(i));
+                }
+            }
+            List <CarSupplierEntity> listCarsSupplier = carsSupplerDao.GetListCarsSupplers();
+            for(int i = 0; i < listCarsSupplier.size(); i++) // берем все поставки по машинам
+            {
+                for(int j = 0; j < listSuppliersWithFilters.size(); j++)
+                {
+                    System.out.println(listCarsSupplier.get(i).getSupplierByIdSupplier().getId() + " - - - " + listSuppliersWithFilters.get(j).getId());
+                    if(Integer.valueOf(listCarsSupplier.get(i).getSupplierByIdSupplier().getId()).equals(listSuppliersWithFilters.get(j).getId()))
+                    {
+                        System.out.println("yvoyvoy");
+                        listCarsSuppliersWithFilters.add(listCarsSupplier.get(i));
+                    }
+                }
+            }
+            request.setAttribute("listCarsSupplier", listCarsSuppliersWithFilters);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("carsSuppliersGui-list.jsp");
+            dispatcher.forward(request, response);
+        }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -48,16 +111,8 @@ public class CarSupplierGUIServlet extends HttpServlet
     private void listCarSupplier(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         List <CarSupplierEntity> listCarsSupplier = carsSupplerDao.GetListCarsSupplers();
-        List <CarsEntity> listCars = carsDao.GetListCars();
-        List <SuppliersEntity> listSupplier = suppliersDao.GetListSuppliers();
         request.setAttribute("listCarsSupplier", listCarsSupplier);
-        request.setAttribute("listCars", listCars);
-        request.setAttribute("listSupplier", listSupplier);
         RequestDispatcher dispatcher = request.getRequestDispatcher("carsSuppliersGui-list.jsp");
         dispatcher.forward(request, response);
-    }
-    private void ShowCars()
-    {
-
     }
 }
